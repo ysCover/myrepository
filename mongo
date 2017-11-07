@@ -1,0 +1,36 @@
+show dbs:显示数据库列表
+show collections：显示当前数据库中的集合（类似关系数据库中的表table）
+db.dropDatabase():删除当前使用的数据库
+use yourDB：切换当前数据库至yourDB
+db.help() ：显示数据库操作命令
+db.yourCollection.help() ：显示集合操作命令，yourCollection是集合名
+
+use dbname
+db.createCollection(collectionName)
+
+统计计数
+db.collectionName.find().count()
+排序：
+db.collectionName.find().sort({KEY:1/-1})  1: 升序  -1：降序
+
+删除数据库
+db.dropDatabase()
+
+删除集合
+db.comment.drop()
+清空集合
+db.comment.remove({})
+
+集合导出
+mongoexport -d mydb -c  comment -o comment.json
+mongoexport -d mydb -c comment --csv -f  user_nickname,user_level_name,user_level_id,comment_id,comment_time,good_name,comment_score,comment_content -o comment.csv 
+
+数据导入
+mongoimport -d JD -c comment comment.json
+mongoimport -d jd -c comment --type csv --headerline --file comment.csv    
+
+mongodb使用
+http://blog.csdn.net/flyfish111222/article/details/51886787
+启动mogodb
+cd /usr/local/mongodb/mongodb-linux-x86_64-3.0.6
+./bin/mongod -f /data/mongodb.conf
